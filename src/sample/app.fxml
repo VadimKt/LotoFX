@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.App">
+   <children>
+      <Button fx:id="ButtonB10" layoutX="64.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB11" layoutX="100.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB12" layoutX="136.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB13" layoutX="172.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB15" layoutX="244.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB17" layoutX="316.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB16" layoutX="280.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB14" layoutX="208.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB18" layoutX="352.0" layoutY="273.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB19" layoutX="64.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB21" layoutX="136.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB20" layoutX="100.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB24" layoutX="244.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB23" layoutX="208.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB27" layoutX="352.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB26" layoutX="316.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB25" layoutX="280.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB22" layoutX="172.0" layoutY="305.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB1" layoutX="64.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB2" layoutX="100.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB3" layoutX="136.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB4" layoutX="172.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB8" layoutX="316.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB6" layoutX="244.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB5" layoutX="208.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB7" layoutX="280.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonB9" layoutX="352.0" layoutY="241.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="GameButton" layoutX="437.0" layoutY="168.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="132.0" text="НАЧАТЬ ИГРУ" />
+      <Label fx:id="BagLabel" layoutX="172.0" layoutY="168.0" prefHeight="51.0" prefWidth="97.0" text="Label" />
+      <Button fx:id="StopButton" layoutX="437.0" layoutY="203.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="132.0" text="ЗАКОНЧИТЬ ИГРУ" />
+      <Button fx:id="ButtonA1" layoutX="64.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA10" layoutX="64.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA19" layoutX="64.0" layoutY="122.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA20" layoutX="100.0" layoutY="122.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA11" layoutX="100.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA2" layoutX="100.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA21" layoutX="136.0" layoutY="122.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA12" layoutX="136.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA3" layoutX="136.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA22" layoutX="172.0" layoutY="122.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA13" layoutX="172.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA4" layoutX="172.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA23" layoutX="208.0" layoutY="122.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA14" layoutX="208.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA5" layoutX="208.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA24" layoutX="243.0" layoutY="122.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA25" layoutX="279.0" layoutY="122.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA26" layoutX="315.0" layoutY="122.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA27" layoutX="351.0" layoutY="122.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA15" layoutX="243.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA16" layoutX="279.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA17" layoutX="315.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA18" layoutX="351.0" layoutY="90.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA6" layoutX="243.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA7" layoutX="279.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA8" layoutX="315.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+      <Button fx:id="ButtonA9" layoutX="351.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
+   </children>
+</AnchorPane>
