@@ -205,7 +205,41 @@ public class App {
 
         GameButton.setOnAction(event -> {
             Card card = new Card();
-            int [][] array = card.getArray();
+            int [][] game1 = card.getArray();
+            int [][] game2 = card.getArray();
+
+
+            ButtonA1.setText("");
+            ButtonA2.setText("");
+            ButtonA3.setText("");
+            ButtonA4.setText("");
+            ButtonA5.setText("");
+            ButtonA6.setText("");
+            ButtonA7.setText("");
+            ButtonA8.setText("");
+            ButtonA9.setText("");
+            ButtonA10.setText("");
+            ButtonA11.setText("");
+            ButtonA12.setText("");
+            ButtonA13.setText("");
+            ButtonA14.setText("");
+            ButtonA15.setText("");
+            ButtonA16.setText("");
+            ButtonA17.setText("");
+            ButtonA18.setText("");
+            ButtonA19.setText("");
+            ButtonA20.setText("");
+            ButtonA21.setText("");
+            ButtonA22.setText("");
+            ButtonA23.setText("");
+            ButtonA24.setText("");
+            ButtonA25.setText("");
+            ButtonA26.setText("");
+            ButtonA27.setText("");
+
+
+
+
 
 
         });
