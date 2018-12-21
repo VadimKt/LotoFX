@@ -12,8 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App {
-    int bag Bag;
 
+    @FXML
+    private Button NextMoveButton;
 
     int value;
     @FXML
@@ -540,6 +541,6 @@ public class App {
     }
 
     public void NextMoveButton(ActionEvent actionEvent) {
-        
+
     }
 }
