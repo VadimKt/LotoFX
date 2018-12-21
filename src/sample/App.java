@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App {
+    int bag Bag;
 
 
     int value;
@@ -537,4 +539,7 @@ public class App {
         }
     }
 
+    public void NextMoveButton(ActionEvent actionEvent) {
+        
+    }
 }

@@ -69,5 +69,6 @@
       <Label layoutX="170.0" layoutY="26.0" prefHeight="17.0" prefWidth="106.0" text="КОМПЬЮТЕР" />
       <Label layoutX="172.0" layoutY="353.0" prefHeight="17.0" prefWidth="44.0" text="ИГРОК" />
       <Label layoutX="105.0" layoutY="178.0" prefHeight="32.0" prefWidth="59.0" text="БОЧЕНОК:" />
+      <Button fx:id="NextMoveButton" layoutX="258.0" layoutY="176.0" mnemonicParsing="false" onAction="#NextMoveButton" prefHeight="38.0" prefWidth="124.0" text="СЛЕДУЮЩИЙ ХОД" />
    </children>
 </AnchorPane>
