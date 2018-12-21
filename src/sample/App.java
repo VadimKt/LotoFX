@@ -184,6 +184,8 @@ public class App {
 
     @FXML
     private Button ButtonB19;
+    @FXML
+    private Button CloseButton;
 
     private int[][] arrayA;
 
@@ -191,6 +193,9 @@ public class App {
 
     @FXML
     void initialize() {
+        CloseButton.setOnAction(event -> {
+            System.exit(0);
+        });
         StopButton.setOnAction(event -> {
             ButtonA1.setText("");
             ButtonA2.setText("");
@@ -421,6 +426,21 @@ public class App {
             if (arrayB[2][8] != 0) {
                 ButtonB27.setText(arrayB[2][8] + "");
             }
+
+
+
+            Bag bag = new Bag();
+            try {
+
+                for (int i = 0; i < 90; i++) {
+                    int Namber = bag.getNumber();
+                    BagLabel.setText(Namber + "");
+                    Thread.sleep(4000);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
 
         });
 
