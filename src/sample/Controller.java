@@ -13,18 +13,18 @@ import java.io.IOException;
 public class Controller {
 
     @FXML
-    private Button CloseBattonAction;
+    private Button closeBattonAction;
 
     @FXML
-    private Button NewGameBattonAction;
+    private Button newGameBattonAction;
 
    @FXML
     void initialize(){
-       CloseBattonAction.setOnAction(event -> {
+       closeBattonAction.setOnAction(event -> {
            System.exit(0);
        });
-       NewGameBattonAction.setOnAction(event -> {
-           NewGameBattonAction.getScene().getWindow().hide();
+       newGameBattonAction.setOnAction(event -> {
+           newGameBattonAction.getScene().getWindow().hide();
            FXMLLoader loader = new FXMLLoader();
            loader.setLocation(getClass().getResource("/sample/app.fxml"));
 
