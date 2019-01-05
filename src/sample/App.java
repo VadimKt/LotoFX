@@ -2,23 +2,13 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-
-
 import java.io.IOException;
-import java.io.NotSerializableException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class App {
     @FXML
@@ -223,6 +213,9 @@ public class App {
     private int[][] arrayA;
 
     private int[][] arrayB;
+
+    Stage window;
+    Scene menu1, menu2, menu3;
 
 
     @FXML
@@ -1544,20 +1537,7 @@ public class App {
 
 
     public void buttonExit(ActionEvent actionEvent) throws IOException {
-        buttonExit.setOnAction(event -> {
-            Stage stage = new Stage();
-            stage.getScene().getWindow().hide();
-        });
-
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Лото");
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
-        stage.setResizable(false);
-
-
-
+            System.exit(0);
     }
 
     class StepThread extends Thread {
@@ -1571,7 +1551,7 @@ public class App {
             try {
                 nextMoveButton.setVisible(false);
                 step = true;
-                StepThread.sleep(1000);
+                StepThread.sleep(4000);
                 step = false;
                 int count1 =0;
                 int count2 =0;
