@@ -21,6 +21,7 @@ public class Bag {
                 arrayBag[n] = 0;
                 return result;
             }
+
         }
         return 0;
     }

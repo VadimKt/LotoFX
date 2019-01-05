@@ -2,15 +2,49 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+
+
+import java.io.IOException;
+import java.io.NotSerializableException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
-
     @FXML
     private Button nextMoveButton;
     Bag bag;
     int value;
+    ArrayList<Button> arraybuttonA = new ArrayList<>();
+    ArrayList<Button> arraybuttonB = new ArrayList<>();
+    ArrayList<Integer> arrayAList;
+    ArrayList<Integer> arrayBList;
+    @FXML
+    private Label labelComp;
+    @FXML
+    private Label labelPlayer;
+
+    @FXML
+    private Label labelBag;
+    @FXML
+    private Label labelWin;
+    @FXML
+    private Label labelLoser;
+
+    @FXML
+    private Button buttonNext;
+    @FXML
+    private Button buttonExit;
 
     boolean step = false;
     @FXML
@@ -190,538 +224,1180 @@ public class App {
 
     private int[][] arrayB;
 
+
     @FXML
     void initialize() {
+        stopButton.setVisible(false);
+        arraybuttonA.add(0, buttonA1);
+        arraybuttonA.add(1, buttonA2);
+        arraybuttonA.add(2, buttonA3);
+        arraybuttonA.add(3, buttonA4);
+        arraybuttonA.add(4, buttonA5);
+        arraybuttonA.add(5, buttonA6);
+        arraybuttonA.add(6, buttonA7);
+        arraybuttonA.add(7, buttonA8);
+        arraybuttonA.add(8, buttonA9);
+        arraybuttonA.add(9, buttonA10);
+        arraybuttonA.add(10, buttonA11);
+        arraybuttonA.add(11, buttonA12);
+        arraybuttonA.add(12, buttonA13);
+        arraybuttonA.add(13, buttonA14);
+        arraybuttonA.add(14, buttonA15);
+        arraybuttonA.add(15, buttonA16);
+        arraybuttonA.add(16, buttonA17);
+        arraybuttonA.add(17, buttonA18);
+        arraybuttonA.add(18, buttonA19);
+        arraybuttonA.add(19, buttonA20);
+        arraybuttonA.add(20, buttonA21);
+        arraybuttonA.add(21, buttonA22);
+        arraybuttonA.add(22, buttonA23);
+        arraybuttonA.add(23, buttonA24);
+        arraybuttonA.add(24, buttonA25);
+        arraybuttonA.add(25, buttonA26);
+        arraybuttonA.add(26, buttonA27);
+
+        arraybuttonB.add(0, buttonB1);
+        arraybuttonB.add(1, buttonB2);
+        arraybuttonB.add(2, buttonB3);
+        arraybuttonB.add(3, buttonB4);
+        arraybuttonB.add(4, buttonB5);
+        arraybuttonB.add(5, buttonB6);
+        arraybuttonB.add(6, buttonB7);
+        arraybuttonB.add(7, buttonB8);
+        arraybuttonB.add(8, buttonB9);
+        arraybuttonB.add(9, buttonB10);
+        arraybuttonB.add(10, buttonB11);
+        arraybuttonB.add(11, buttonB12);
+        arraybuttonB.add(12, buttonB13);
+        arraybuttonB.add(13, buttonB14);
+        arraybuttonB.add(14, buttonB15);
+        arraybuttonB.add(15, buttonB16);
+        arraybuttonB.add(16, buttonB17);
+        arraybuttonB.add(17, buttonB18);
+        arraybuttonB.add(18, buttonB19);
+        arraybuttonB.add(19, buttonB20);
+        arraybuttonB.add(20, buttonB21);
+        arraybuttonB.add(21, buttonB22);
+        arraybuttonB.add(22, buttonB23);
+        arraybuttonB.add(23, buttonB24);
+        arraybuttonB.add(24, buttonB25);
+        arraybuttonB.add(25, buttonB26);
+        arraybuttonB.add(26, buttonB27);
+        labelWin.setVisible(false);
+        labelLoser.setVisible(false);
+        buttonNext.setVisible(false);
+        buttonExit.setVisible(false);
+        nextMoveButton.setVisible(false);
 
 
-
-
-        bag = new Bag();
         closeButton.setOnAction(event -> {
             System.exit(0);
         });
         stopButton.setOnAction(event -> {
-            buttonA1.setText("");
-            buttonA2.setText("");
-            buttonA3.setText("");
-            buttonA4.setText("");
-            buttonA5.setText("");
-            buttonA6.setText("");
-            buttonA7.setText("");
-            buttonA8.setText("");
-            buttonA9.setText("");
-            buttonA10.setText("");
-            buttonA11.setText("");
-            buttonA12.setText("");
-            buttonA13.setText("");
-            buttonA14.setText("");
-            buttonA15.setText("");
-            buttonA16.setText("");
-            buttonA17.setText("");
-            buttonA18.setText("");
-            buttonA19.setText("");
-            buttonA20.setText("");
-            buttonA21.setText("");
-            buttonA22.setText("");
-            buttonA23.setText("");
-            buttonA24.setText("");
-            buttonA25.setText("");
-            buttonA26.setText("");
-            buttonA27.setText("");
-            buttonB1.setText("");
-            buttonB2.setText("");
-            buttonB3.setText("");
-            buttonB4.setText("");
-            buttonB5.setText("");
-            buttonB6.setText("");
-            buttonB7.setText("");
-            buttonB8.setText("");
-            buttonB9.setText("");
-            buttonB10.setText("");
-            buttonB11.setText("");
-            buttonB12.setText("");
-            buttonB13.setText("");
-            buttonB14.setText("");
-            buttonB15.setText("");
-            buttonB16.setText("");
-            buttonB17.setText("");
-            buttonB18.setText("");
-            buttonB19.setText("");
-            buttonB20.setText("");
-            buttonB21.setText("");
-            buttonB22.setText("");
-            buttonB23.setText("");
-            buttonB24.setText("");
-            buttonB25.setText("");
-            buttonB26.setText("");
-            buttonB27.setText("");
-            gameButton.setVisible(true);
+            if (!step) {
+                for (Button button : arraybuttonA) {
+                    button.setText("");
+                }
+                for (Button button : arraybuttonB) {
+                    button.setText("");
+                }
+                bagLabel.setText("");
 
+                gameButton.setVisible(true);
+                stopButton.setVisible(false);
+            }
 
         });
 
         gameButton.setOnAction(event -> {
-
-
+            stopButton.setVisible(true);
+            bag = new Bag();
             Card cardA = new Card();
             arrayA = cardA.getArray();
             Card cardB = new Card();
             arrayB = cardB.getArray();
-            if (arrayA[0][0] != 0) {
-                buttonA1.setText(arrayA[0][0] + "");
+            arrayAList = new ArrayList<>();
+            arrayBList = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 9; j++) {
+                    arrayAList.add(arrayA[i][j]);
+                }
             }
-            if (arrayA[0][1] != 0) {
-                buttonA2.setText(arrayA[0][1] + "");
-            }
-            if (arrayA[0][2] != 0) {
-                buttonA3.setText(arrayA[0][2] + "");
-            }
-            if (arrayA[0][3] != 0) {
-                buttonA4.setText(arrayA[0][3] + "");
-            }
-            if (arrayA[0][4] != 0) {
-                buttonA5.setText(arrayA[0][4] + "");
-            }
-            if (arrayA[0][5] != 0) {
-                buttonA6.setText(arrayA[0][5] + "");
-            }
-            if (arrayA[0][6] != 0) {
-                buttonA7.setText(arrayA[0][6] + "");
-            }
-            if (arrayA[0][7] != 0) {
-                buttonA8.setText(arrayA[0][7] + "");
-            }
-            if (arrayA[0][8] != 0) {
-                buttonA9.setText(arrayA[0][8] + "");
-            }
-            if (arrayA[1][0] != 0) {
-                buttonA10.setText(arrayA[1][0] + "");
-            }
-            if (arrayA[1][1] != 0) {
-                buttonA11.setText(arrayA[1][1] + "");
-            }
-            if (arrayA[1][2] != 0) {
-                buttonA12.setText(arrayA[1][2] + "");
-            }
-            if (arrayA[1][3] != 0) {
-                buttonA13.setText(arrayA[1][3] + "");
-            }
-            if (arrayA[1][4] != 0) {
-                buttonA14.setText(arrayA[1][4] + "");
-            }
-            if (arrayA[1][5] != 0) {
-                buttonA15.setText(arrayA[1][5] + "");
-            }
-            if (arrayA[1][6] != 0) {
-                buttonA16.setText(arrayA[1][6] + "");
-            }
-            if (arrayA[1][7] != 0) {
-                buttonA17.setText(arrayA[1][7] + "");
-            }
-            if (arrayA[1][8] != 0) {
-                buttonA18.setText(arrayA[1][8] + "");
-            }
-            if (arrayA[2][0] != 0) {
-                buttonA19.setText(arrayA[2][0] + "");
-            }
-            if (arrayA[2][1] != 0) {
-                buttonA20.setText(arrayA[2][1] + "");
-            }
-            if (arrayA[2][2] != 0) {
-                buttonA21.setText(arrayA[2][2] + "");
-            }
-            if (arrayA[2][3] != 0) {
-                buttonA22.setText(arrayA[2][3] + "");
-            }
-            if (arrayA[2][4] != 0) {
-                buttonA23.setText(arrayA[2][4] + "");
-            }
-            if (arrayA[2][5] != 0) {
-                buttonA24.setText(arrayA[2][5] + "");
-            }
-            if (arrayA[2][6] != 0) {
-                buttonA25.setText(arrayA[2][6] + "");
-            }
-            if (arrayA[2][7] != 0) {
-                buttonA26.setText(arrayA[2][7] + "");
-            }
-            if (arrayA[2][8] != 0) {
-                buttonA27.setText(arrayA[2][8] + "");
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 9; j++) {
+                    arrayBList.add(arrayB[i][j]);
+                }
             }
 
-            if (arrayB[0][0] != 0) {
-                buttonB1.setText(arrayB[0][0] + "");
+            int count1 = 0;
+            for (Button button : arraybuttonA) {
+                if (arrayAList.get(count1) != 0) {
+                    button.setText(arrayAList.get(count1) + "");
+                }
+                count1++;
             }
-            if (arrayB[0][1] != 0) {
-                buttonB2.setText(arrayB[0][1] + "");
-            }
-            if (arrayB[0][2] != 0) {
-                buttonB3.setText(arrayB[0][2] + "");
-            }
-            if (arrayB[0][3] != 0) {
-                buttonB4.setText(arrayB[0][3] + "");
-            }
-            if (arrayB[0][4] != 0) {
-                buttonB5.setText(arrayB[0][4] + "");
-            }
-            if (arrayB[0][5] != 0) {
-                buttonB6.setText(arrayB[0][5] + "");
-            }
-            if (arrayB[0][6] != 0) {
-                buttonB7.setText(arrayB[0][6] + "");
-            }
-            if (arrayB[0][7] != 0) {
-                buttonB8.setText(arrayB[0][7] + "");
-            }
-            if (arrayB[0][8] != 0) {
-                buttonB9.setText(arrayB[0][8] + "");
-            }
-            if (arrayB[1][0] != 0) {
-                buttonB10.setText(arrayB[1][0] + "");
-            }
-            if (arrayB[1][1] != 0) {
-                buttonB11.setText(arrayB[1][1] + "");
-            }
-            if (arrayB[1][2] != 0) {
-                buttonB12.setText(arrayB[1][2] + "");
-            }
-            if (arrayB[1][3] != 0) {
-                buttonB13.setText(arrayB[1][3] + "");
-            }
-            if (arrayB[1][4] != 0) {
-                buttonB14.setText(arrayB[1][4] + "");
-            }
-            if (arrayB[1][5] != 0) {
-                buttonB15.setText(arrayB[1][5] + "");
-            }
-            if (arrayB[1][6] != 0) {
-                buttonB16.setText(arrayB[1][6] + "");
-            }
-            if (arrayB[1][7] != 0) {
-                buttonB17.setText(arrayB[1][7] + "");
-            }
-            if (arrayB[1][8] != 0) {
-                buttonB18.setText(arrayB[1][8] + "");
-            }
-            if (arrayB[2][0] != 0) {
-                buttonB19.setText(arrayB[2][0] + "");
-            }
-            if (arrayB[2][1] != 0) {
-                buttonB20.setText(arrayB[2][1] + "");
-            }
-            if (arrayB[2][2] != 0) {
-                buttonB21.setText(arrayB[2][2] + "");
-            }
-            if (arrayB[2][3] != 0) {
-                buttonB22.setText(arrayB[2][3] + "");
-            }
-            if (arrayB[2][4] != 0) {
-                buttonB23.setText(arrayB[2][4] + "");
-            }
-            if (arrayB[2][5] != 0) {
-                buttonB24.setText(arrayB[2][5] + "");
-            }
-            if (arrayB[2][6] != 0) {
-                buttonB25.setText(arrayB[2][6] + "");
-            }
-            if (arrayB[2][7] != 0) {
-                buttonB26.setText(arrayB[2][7] + "");
-            }
-            if (arrayB[2][8] != 0) {
-                buttonB27.setText(arrayB[2][8] + "");
+            int count2 = 0;
+            for (Button button : arraybuttonB) {
+                if (arrayBList.get(count2) != 0) {
+                    button.setText(arrayBList.get(count2) + "");
+                }
+                count2++;
             }
             try {
-                if(!step) {
+                if (!step) {
                     StepThread stepThread = new StepThread("Ход");
                     Thread.sleep(20);
                     value = bag.getNumber();
                     bagLabel.setText(value + "");
+                    for (Button button : arraybuttonA) {
+                        if (!button.getText().equals("")) {
+                            if (value == Integer.parseInt(button.getText())) {
+                                button.setText("X");
+
+                            }
+                        }
+
+                    }
                     stepThread.start();
                 }
-
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             gameButton.setVisible(false);
-
-
-
         });
-
-
 
 
         buttonB1.setOnAction(event -> {
-            if(step) {
-                if (!buttonB2.getText().equals("")) {
+
+            if (step) {
+                if (!buttonB1.getText().equals("")&& !buttonB1.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB1.getText())) {
                         buttonB1.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
+
+
         });
         buttonB2.setOnAction(event -> {
-            if(step) {
-                if (!buttonB2.getText().equals("")) {
+            if (step) {
+                if (!buttonB2.getText().equals("")&& !buttonB2.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB2.getText())) {
                         buttonB2.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB3.setOnAction(event -> {
-            if(step) {
-                if (!buttonB3.getText().equals("")) {
+            if (step) {
+                if (!buttonB3.getText().equals("")&& !buttonB3.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB3.getText())) {
                         buttonB3.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB4.setOnAction(event -> {
-            if(step) {
-                if (!buttonB4.getText().equals("")) {
+            if (step) {
+                if (!buttonB4.getText().equals("")&& !buttonB4.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB4.getText())) {
                         buttonB4.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB5.setOnAction(event -> {
-            if(step) {
-                if (!buttonB5.getText().equals("")) {
+            if (step) {
+                if (!buttonB5.getText().equals("")&& !buttonB5.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB5.getText())) {
                         buttonB5.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB6.setOnAction(event -> {
-            if(step) {
-                if (!buttonB6.getText().equals("")) {
+            if (step) {
+                if (!buttonB6.getText().equals("")&& !buttonB6.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB6.getText())) {
                         buttonB6.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
+
         });
         buttonB7.setOnAction(event -> {
-            if(step) {
-                if (!buttonB7.getText().equals("")) {
+            if (step) {
+                if (!buttonB7.getText().equals("")&& !buttonB7.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB7.getText())) {
                         buttonB7.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB8.setOnAction(event -> {
-            if(step) {
-                if (!buttonB8.getText().equals("")) {
+            if (step) {
+                if (!buttonB8.getText().equals("")&& !buttonB8.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB8.getText())) {
                         buttonB8.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB9.setOnAction(event -> {
-            if(step) {
-                if (!buttonB9.getText().equals("")) {
+            if (step) {
+                if (!buttonB9.getText().equals("")&& !buttonB9.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB9.getText())) {
                         buttonB9.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB10.setOnAction(event -> {
-            if(step) {
-                if (!buttonB10.getText().equals("")) {
+            if (step) {
+                if (!buttonB10.getText().equals("")&& !buttonB10.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB10.getText())) {
                         buttonB10.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB11.setOnAction(event -> {
-            if(step) {
-                if (!buttonB11.getText().equals("")) {
+            if (step) {
+                if (!buttonB11.getText().equals("")&& !buttonB11.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB11.getText())) {
                         buttonB11.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB12.setOnAction(event -> {
-            if(step) {
-                if (!buttonB12.getText().equals("")) {
+            if (step) {
+                if (!buttonB12.getText().equals("")&& !buttonB12.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB12.getText())) {
                         buttonB12.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB13.setOnAction(event -> {
-            if(step) {
-                if (!buttonB13.getText().equals("")) {
+            if (step) {
+                if (!buttonB13.getText().equals("")&& !buttonB13.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB13.getText())) {
                         buttonB13.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB14.setOnAction(event -> {
-            if(step) {
-                if (!buttonB14.getText().equals("")) {
+            if (step) {
+                if (!buttonB14.getText().equals("")&& !buttonB14.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB14.getText())) {
                         buttonB14.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB15.setOnAction(event -> {
-            if(step) {
-                if (!buttonB15.getText().equals("")) {
+            if (step) {
+                if (!buttonB15.getText().equals("")&& !buttonB15.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB15.getText())) {
                         buttonB15.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB16.setOnAction(event -> {
-            if(step) {
-                if (!buttonB16.getText().equals("")) {
+            if (step) {
+                if (!buttonB16.getText().equals("")&& !buttonB16.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB16.getText())) {
                         buttonB16.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB17.setOnAction(event -> {
-            if(step) {
-                if (!buttonB17.getText().equals("")) {
+            if (step) {
+                if (!buttonB17.getText().equals("")&& !buttonB17.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB17.getText())) {
                         buttonB17.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB18.setOnAction(event -> {
-            if(step) {
-                if (!buttonB18.getText().equals("")) {
+            if (step) {
+                if (!buttonB18.getText().equals("")&& !buttonB18.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB18.getText())) {
                         buttonB18.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB19.setOnAction(event -> {
-            if(step) {
-                if (!buttonB19.getText().equals("")) {
+            if (step) {
+                if (!buttonB19.getText().equals("")&& !buttonB19.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB19.getText())) {
                         buttonB19.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB20.setOnAction(event -> {
-            if(step) {
-                if (!buttonB20.getText().equals("")) {
+            if (step) {
+                if (!buttonB20.getText().equals("")&& !buttonB20.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB20.getText())) {
                         buttonB20.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB21.setOnAction(event -> {
-            if(step) {
-                if (!buttonB21.getText().equals("")) {
+            if (step) {
+                if (!buttonB21.getText().equals("")&& !buttonB21.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB21.getText())) {
                         buttonB21.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB22.setOnAction(event -> {
-            if(step) {
-                if (!buttonB22.getText().equals("")) {
+            if (step) {
+                if (!buttonB22.getText().equals("")&& !buttonB22.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB22.getText())) {
                         buttonB22.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB23.setOnAction(event -> {
-            if(step) {
-                if (!buttonB23.getText().equals("")) {
+            if (step) {
+                if (!buttonB23.getText().equals("")&& !buttonB23.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB23.getText())) {
                         buttonB23.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
+
                     }
                 }
             }
 
         });
         buttonB24.setOnAction(event -> {
-            if(step) {
-                if (!buttonB24.getText().equals("")) {
+            if (step) {
+                if (!buttonB24.getText().equals("")&& !buttonB24.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB24.getText())) {
                         buttonB24.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB25.setOnAction(event -> {
-            if(step) {
-                if (!buttonB25.getText().equals("")) {
+            if (step) {
+                if (!buttonB25.getText().equals("")&& !buttonB25.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB25.getText())) {
                         buttonB25.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB26.setOnAction(event -> {
-            if(step) {
-                if (!buttonB26.getText().equals("")) {
+            if (step) {
+                if (!buttonB26.getText().equals("")&& !buttonB26.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB26.getText())) {
                         buttonB26.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
         buttonB27.setOnAction(event -> {
-            if(step) {
-                if (!buttonB27.getText().equals("")) {
+            if (step) {
+                if (!buttonB27.getText().equals("")&& !buttonB27.getText().equals("X")) {
                     if (value == Integer.parseInt(buttonB27.getText())) {
                         buttonB27.setText("X");
+                        int count =0;
+                        for(Button button:arraybuttonB){
+                            if (button.getText().equals("") || button.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
+                                    }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelWin.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+                                    step = false;
+
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }
 
         });
-
 
 
     }
@@ -729,12 +1405,50 @@ public class App {
 
     public void NextMoveButton(ActionEvent actionEvent) {
         try {
-            if(!step) {
+            if (!step) {
                 StepThread stepThread = new StepThread("Ход");
                 Thread.sleep(20);
                 value = bag.getNumber();
                 bagLabel.setText(value + "");
+                for (Button button : arraybuttonA) {
+                    if (!button.getText().equals("") && !button.getText().equals("X")) {
+                        if (value == Integer.parseInt(button.getText())) {
+                            button.setText("X");
+                            int count =0;
+                            for(Button button3 :arraybuttonA){
+                                if (button3.getText().equals("") || button3.getText().equals("X")) {
+                                    count++;
+                                    if(count==27){
+                                        for(Button button2:arraybuttonB){
+                                            button2.setVisible(false);
+                                        }
+                                        for(Button button1:arraybuttonA){
+                                            button1.setVisible(false);
+                                        }
+                                        gameButton.setVisible(false);
+                                        stopButton.setVisible(false);
+                                        closeButton.setVisible(false);
+                                        nextMoveButton.setVisible(false);
+                                        bagLabel.setVisible(false);
+                                        labelBag.setVisible(false);
+                                        labelComp.setVisible(false);
+                                        labelPlayer.setVisible(false);
+                                        labelLoser.setVisible(true);
+                                        buttonNext.setVisible(true);
+                                        buttonExit.setVisible(true);
+
+
+                                    }
+
+                                }
+                            }
+
+                        }
+                    }
+
+                }
                 stepThread.start();
+
             }
 
 
@@ -744,21 +1458,146 @@ public class App {
 
 
     }
-    class StepThread extends Thread{
-        StepThread(String name){
+
+    public void buttonNext(ActionEvent actionEvent) {
+
+        for(Button button2:arraybuttonB){
+            button2.setVisible(true);
+        }
+        for(Button button1:arraybuttonA){
+            button1.setVisible(true);
+        }
+        stopButton.setVisible(true);
+        closeButton.setVisible(true);
+        nextMoveButton.setVisible(true);
+        bagLabel.setVisible(true);
+        labelBag.setVisible(true);
+        labelComp.setVisible(true);
+        labelPlayer.setVisible(true);
+        labelLoser.setVisible(false);
+        labelWin.setVisible(false);
+        buttonNext.setVisible(false);
+        buttonExit.setVisible(false);
+        for (Button button : arraybuttonA) {
+            button.setText("");
+        }
+        for (Button button : arraybuttonB) {
+            button.setText("");
+        }
+        bagLabel.setText("");
+
+
+        bag = new Bag();
+        Card cardA = new Card();
+        arrayA = cardA.getArray();
+        Card cardB = new Card();
+        arrayB = cardB.getArray();
+        arrayAList = new ArrayList<>();
+        arrayBList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 9; j++) {
+                arrayAList.add(arrayA[i][j]);
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 9; j++) {
+                arrayBList.add(arrayB[i][j]);
+            }
+        }
+
+        int count1 = 0;
+        for (Button button : arraybuttonA) {
+            if (arrayAList.get(count1) != 0) {
+                button.setText(arrayAList.get(count1) + "");
+            }
+            count1++;
+        }
+        int count2 = 0;
+        for (Button button : arraybuttonB) {
+            if (arrayBList.get(count2) != 0) {
+                button.setText(arrayBList.get(count2) + "");
+            }
+            count2++;
+        }
+        try {
+            if (!step) {
+                StepThread stepThread = new StepThread("Ход");
+                Thread.sleep(20);
+                value = bag.getNumber();
+                bagLabel.setText(value + "");
+                for (Button button : arraybuttonA) {
+                    if (!button.getText().equals("")) {
+                        if (value == Integer.parseInt(button.getText())) {
+                            button.setText("X");
+
+                        }
+                    }
+
+                }
+                stepThread.start();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        gameButton.setVisible(false);
+    }
+
+
+    public void buttonExit(ActionEvent actionEvent) throws IOException {
+        buttonExit.setOnAction(event -> {
+            Stage stage = new Stage();
+            stage.getScene().getWindow().hide();
+        });
+
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Лото");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+        stage.setResizable(false);
+
+
+
+    }
+
+    class StepThread extends Thread {
+        StepThread(String name) {
             super(name);
         }
-        public void run(){
+
+        public void run() {
 
             System.out.printf("%s начался... \n", Thread.currentThread().getName());
-            try{
-
+            try {
+                nextMoveButton.setVisible(false);
                 step = true;
-                StepThread.sleep(5000);
+                StepThread.sleep(1000);
                 step = false;
+                int count1 =0;
+                int count2 =0;
+                for(Button button :arraybuttonA){
+                    if (button.getText().equals("") || button.getText().equals("X")) {
+                        count1++;
 
-            }
-            catch(InterruptedException e){
+                    }
+                }
+                for(Button button :arraybuttonB){
+                    if (button.getText().equals("") || button.getText().equals("X")) {
+                        count2++;
+
+                    }
+                }
+                if(count1==27 || count2==27){
+                    nextMoveButton.setVisible(false);
+                }
+                else {
+                    nextMoveButton.setVisible(true);
+                }
+
+
+
+
+            } catch (InterruptedException e) {
                 System.out.println("Thread has been interrupted");
             }
             System.out.printf("%s закончился... \n", Thread.currentThread().getName());
@@ -766,7 +1605,7 @@ public class App {
         }
 
 
-
     }
+
 
 }

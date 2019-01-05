@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -66,9 +67,21 @@
       <Button fx:id="buttonA8" layoutX="315.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
       <Button fx:id="buttonA9" layoutX="351.0" layoutY="58.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="36.0" />
       <Button fx:id="closeButton" layoutX="437.0" layoutY="219.0" mnemonicParsing="false" onAction="#initialize" prefHeight="32.0" prefWidth="132.0" text="ВЫХОД" />
-      <Label layoutX="170.0" layoutY="26.0" prefHeight="17.0" prefWidth="106.0" text="КОМПЬЮТЕР" />
-      <Label layoutX="172.0" layoutY="353.0" prefHeight="17.0" prefWidth="44.0" text="ИГРОК" />
-      <Label layoutX="105.0" layoutY="178.0" prefHeight="32.0" prefWidth="59.0" text="БОЧЕНОК:" />
+      <Label fx:id="labelComp" layoutX="170.0" layoutY="26.0" prefHeight="17.0" prefWidth="106.0" text="КОМПЬЮТЕР" />
+      <Label fx:id="labelPlayer" layoutX="172.0" layoutY="353.0" prefHeight="17.0" prefWidth="44.0" text="ИГРОК" />
+      <Label fx:id="labelBag" layoutX="105.0" layoutY="178.0" prefHeight="32.0" prefWidth="59.0" text="БОЧЕНОК:" />
       <Button fx:id="nextMoveButton" layoutX="258.0" layoutY="176.0" mnemonicParsing="false" onAction="#NextMoveButton" prefHeight="38.0" prefWidth="124.0" text="СЛЕДУЮЩИЙ ХОД" />
+      <Button fx:id="buttonNext" layoutX="195.0" layoutY="210.0" mnemonicParsing="false" onAction="#buttonNext" prefHeight="51.0" prefWidth="204.0" text="ПОПРОБОВАТЬ СНОВА" />
+      <Button fx:id="buttonExit" layoutX="195.0" layoutY="280.0" mnemonicParsing="false" onAction="#buttonExit" prefHeight="51.0" prefWidth="204.0" text="ВЫХОД" />
+      <Label fx:id="labelWin" layoutX="176.0" layoutY="108.0" prefHeight="61.0" prefWidth="248.0" text="Поздравляю! Вы победили!" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelLoser" layoutX="234.0" layoutY="108.0" prefHeight="61.0" prefWidth="132.0" text="Вы проиграли.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
