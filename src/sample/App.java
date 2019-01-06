@@ -214,10 +214,6 @@ public class App {
 
     private int[][] arrayB;
 
-    Stage window;
-    Scene menu1, menu2, menu3;
-
-
     @FXML
     void initialize() {
         stopButton.setVisible(false);
