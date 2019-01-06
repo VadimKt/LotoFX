@@ -339,7 +339,7 @@ public class App {
             try {
                 if (!step) {
                     StepThread stepThread = new StepThread("Ход");
-                    Thread.sleep(20);
+                    Thread.sleep(1);
                     value = bag.getNumber();
                     bagLabel.setText(value + "");
                     for (Button button : arraybuttonA) {
@@ -1460,7 +1460,6 @@ public class App {
         for(Button button1:arraybuttonA){
             button1.setVisible(true);
         }
-        stopButton.setVisible(true);
         closeButton.setVisible(true);
         nextMoveButton.setVisible(true);
         bagLabel.setVisible(true);
@@ -1479,60 +1478,7 @@ public class App {
         }
         bagLabel.setText("");
 
-
-        bag = new Bag();
-        Card cardA = new Card();
-        arrayA = cardA.getArray();
-        Card cardB = new Card();
-        arrayB = cardB.getArray();
-        arrayAList = new ArrayList<>();
-        arrayBList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 9; j++) {
-                arrayAList.add(arrayA[i][j]);
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 9; j++) {
-                arrayBList.add(arrayB[i][j]);
-            }
-        }
-
-        int count1 = 0;
-        for (Button button : arraybuttonA) {
-            if (arrayAList.get(count1) != 0) {
-                button.setText(arrayAList.get(count1) + "");
-            }
-            count1++;
-        }
-        int count2 = 0;
-        for (Button button : arraybuttonB) {
-            if (arrayBList.get(count2) != 0) {
-                button.setText(arrayBList.get(count2) + "");
-            }
-            count2++;
-        }
-        try {
-            if (!step) {
-                StepThread stepThread = new StepThread("Ход");
-                Thread.sleep(20);
-                value = bag.getNumber();
-                bagLabel.setText(value + "");
-                for (Button button : arraybuttonA) {
-                    if (!button.getText().equals("")) {
-                        if (value == Integer.parseInt(button.getText())) {
-                            button.setText("X");
-
-                        }
-                    }
-
-                }
-                stepThread.start();
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        gameButton.setVisible(false);
+        gameButton.setVisible(true);
     }
 
 
