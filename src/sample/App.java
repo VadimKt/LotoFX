@@ -4,8 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -1457,7 +1455,6 @@ public class App {
             button1.setVisible(true);
         }
         closeButton.setVisible(true);
-        nextMoveButton.setVisible(true);
         bagLabel.setVisible(true);
         labelBag.setVisible(true);
         labelComp.setVisible(true);
