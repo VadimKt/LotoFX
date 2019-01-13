@@ -330,25 +330,20 @@ public class App {
                 }
                 count2++;
             }
-            try {
-                if (!step) {
-                    StepThread stepThread = new StepThread("Ход");
-                    Thread.sleep(1);
-                    value = bag.getNumber();
-                    bagLabel.setText(value + "");
-                    for (Button button : arraybuttonA) {
-                        if (!button.getText().equals("")) {
-                            if (value == Integer.parseInt(button.getText())) {
-                                button.setText("X");
+            if (!step) {
+                StepThread stepThread = new StepThread("Ход");
+                value = bag.getNumber();
+                bagLabel.setText(value + "");
+                for (Button button : arraybuttonA) {
+                    if (!button.getText().equals("")) {
+                        if (value == Integer.parseInt(button.getText())) {
+                            button.setText("X");
 
-                            }
                         }
-
                     }
-                    stepThread.start();
+
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                stepThread.start();
             }
             gameButton.setVisible(false);
         });
@@ -1391,56 +1386,50 @@ public class App {
 
 
     public void NextMoveButton(ActionEvent actionEvent) {
-        try {
-            if (!step) {
-                StepThread stepThread = new StepThread("Ход");
-                Thread.sleep(20);
-                value = bag.getNumber();
-                bagLabel.setText(value + "");
-                for (Button button : arraybuttonA) {
-                    if (!button.getText().equals("") && !button.getText().equals("X")) {
-                        if (value == Integer.parseInt(button.getText())) {
-                            button.setText("X");
-                            int count =0;
-                            for(Button button3 :arraybuttonA){
-                                if (button3.getText().equals("") || button3.getText().equals("X")) {
-                                    count++;
-                                    if(count==27){
-                                        for(Button button2:arraybuttonB){
-                                            button2.setVisible(false);
-                                        }
-                                        for(Button button1:arraybuttonA){
-                                            button1.setVisible(false);
-                                        }
-                                        gameButton.setVisible(false);
-                                        stopButton.setVisible(false);
-                                        closeButton.setVisible(false);
-                                        nextMoveButton.setVisible(false);
-                                        bagLabel.setVisible(false);
-                                        labelBag.setVisible(false);
-                                        labelComp.setVisible(false);
-                                        labelPlayer.setVisible(false);
-                                        labelLoser.setVisible(true);
-                                        buttonNext.setVisible(true);
-                                        buttonExit.setVisible(true);
+        if (!step) {
+            StepThread stepThread = new StepThread("Ход");
 
-
+            value = bag.getNumber();
+            bagLabel.setText(value + "");
+            for (Button button : arraybuttonA) {
+                if (!button.getText().equals("") && !button.getText().equals("X")) {
+                    if (value == Integer.parseInt(button.getText())) {
+                        button.setText("X");
+                        int count =0;
+                        for(Button button3 :arraybuttonA){
+                            if (button3.getText().equals("") || button3.getText().equals("X")) {
+                                count++;
+                                if(count==27){
+                                    for(Button button2:arraybuttonB){
+                                        button2.setVisible(false);
                                     }
+                                    for(Button button1:arraybuttonA){
+                                        button1.setVisible(false);
+                                    }
+                                    gameButton.setVisible(false);
+                                    stopButton.setVisible(false);
+                                    closeButton.setVisible(false);
+                                    nextMoveButton.setVisible(false);
+                                    bagLabel.setVisible(false);
+                                    labelBag.setVisible(false);
+                                    labelComp.setVisible(false);
+                                    labelPlayer.setVisible(false);
+                                    labelLoser.setVisible(true);
+                                    buttonNext.setVisible(true);
+                                    buttonExit.setVisible(true);
+
 
                                 }
+
                             }
-
                         }
-                    }
 
+                    }
                 }
-                stepThread.start();
 
             }
+            stepThread.start();
 
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
 
