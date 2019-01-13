@@ -1464,7 +1464,7 @@ public class App {
     }
 
 
-    public void buttonExit(ActionEvent actionEvent) throws IOException {
+    public void buttonExit(ActionEvent actionEvent) {
             System.exit(0);
     }
 
